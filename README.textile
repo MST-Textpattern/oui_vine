@@ -1,0 +1,45 @@
+h1. oui_player_vine
+
+A Vine extension for oui_player.
+See the oui_player help for global config/tags informations.
+
+h2. Plugin requirements
+
+oui_player's minimum requirements:
+
+* "Textpattern CMS":http://textpattern.com/ 4.6+.
+* "oui_player":https://github.com/oui-textpattern/oui_player/ 2.+.
+
+h2. Recognised values for the @play@ attribute
+
+* *ID* (using @vine@ as provider.)
+* http(s)://(www.)vine.co/v/[*ID*]
+
+h2. Player size
+
+- @width@ :=
+The width of the player in pixels.
+*Default:* related plugin pref
+*Initial:* @600@
+*valid:* integer =:
+- @height@ :=
+*Default:* related plugin pref
+*Initial:* @600@
+*valid:* integer
+The height of the player in pixels. =:
+- @ratio@ :=
+The ratio used to calculate the missing value for the width or the height.
+*Default:* related plugin pref
+*Initial:* none
+*valid:* integer[@:@]integer =:
+
+h2. Player parameters
+
+- @type@ :=
+*Default:* related plugin pref
+*Initial:* @simple@
+*valid:* @simple@ or @postcard@ =:
+- @audio@ :=
+*Default:* related plugin pref
+*Initial:* @0@
+*valid:* @0@ or @1@ =:
