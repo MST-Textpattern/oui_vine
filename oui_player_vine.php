@@ -88,7 +88,9 @@ namespace Oui\Player {
             }
         }
 
-        if (txpinterface === 'admin') {
+        global $event;
+
+        if (txpinterface === 'admin' && $event === 'prefs') {
             Vine::getInstance();
         }
     }
