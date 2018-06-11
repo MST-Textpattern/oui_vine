@@ -65,12 +65,12 @@ namespace Oui\Player {
              * {@inheritdoc}
              */
 
-            public function getParams()
+            public function getPlayerParams()
             {
                 $params = array();
 
-                foreach (static::$params as $param => $infos) {
-                    $pref = \get_pref(strtolower(str_replace('\\', '_', get_class($this))) . '_' . $param);
+                foreach (self::getParams() as $param => $infos) {
+                    $pref = get_pref(strtolower(str_replace('\\', '_', get_class($this))) . '_' . $param);
                     $default = $infos['default'];
                     $value = isset($this->config[$param]) ? $this->config[$param] : '';
 
@@ -88,10 +88,6 @@ namespace Oui\Player {
             }
         }
 
-        global $event;
-
-        if (txpinterface === 'admin' && ($event === 'prefs' || $event === 'plugin_prefs.oui_player_vine')) {
-            Vine::getInstance();
-        }
+        register_callback('Oui\Player\Vine::getProvider', 'oui_player', 'plug_providers');
     }
 }
