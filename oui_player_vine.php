@@ -87,6 +87,15 @@ namespace Oui\Player {
                 return $params;
             }
         }
+    }
+}
 
+namespace {
+    function oui_vine($atts) {
+        return oui_player(array_merge(array('provider' => 'vine'), $atts));
+    }
+
+    function oui_if_vine($atts, $thing) {
+        return oui_if_player(array_merge(array('provider' => 'vine'), $atts), $thing);
     }
 }
