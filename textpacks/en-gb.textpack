@@ -1,8 +1,8 @@
 #Default language, en-us, en-gb
 #@admin
 oui_player_provider_vine => Vine
-oui_player_vine => Vine player (oui_player_vine)
-oui_player_vine_prefs => Display the Vine player prefs
+oui_player_vine => Vine player
+oui_player_vine_prefs => Display the Vine player preferences
 oui_player_vine_width => Video width
 oui_player_vine_height => Video height
 oui_player_vine_ratio => Player ratio by default
