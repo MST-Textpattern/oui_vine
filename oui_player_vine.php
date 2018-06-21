@@ -88,6 +88,5 @@ namespace Oui\Player {
             }
         }
 
-        register_callback('Oui\Player\Vine::getProvider', 'oui_player', 'plug_providers');
     }
 }
