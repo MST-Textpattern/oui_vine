@@ -1,5 +1,5 @@
 {
-    "name": "oui/oui_player_vine",
+    "name": "oui/oui_vine",
     "description": "Vine HTML extension for oui_player",
     "keywords": [
         "textpattern",
@@ -8,7 +8,7 @@
         "video",
         "vine"
     ],
-    "homepage": "https://github.com/NicolasGraph/oui_player_vine",
+    "homepage": "https://github.com/NicolasGraph/oui_vine",
     "license": "GPL-2.0-only",
     "type": "textpattern-plugin",
     "authors": [
@@ -19,8 +19,8 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/NicolasGraph/oui_player_vine/issues",
-        "source": "https://github.com/NicolasGraph/oui_player_vine"
+        "issues": "https://github.com/NicolasGraph/oui_vine/issues",
+        "source": "https://github.com/NicolasGraph/oui_vine"
     },
     "require": {
         "textpattern/lock": "4.6.*",

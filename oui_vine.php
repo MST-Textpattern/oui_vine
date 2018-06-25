@@ -1,11 +1,11 @@
 <?php
 
 /*
- * This file is part of oui_player_vine,
+ * This file is part of oui_vine,
  * a oui_player v2+ extension to easily embed
  * Vine customizable video players in Textpattern CMS.
  *
- * https://github.com/NicolasGraph/oui_player_vine
+ * https://github.com/NicolasGraph/oui_vine
  *
  * Copyright (C) 2018 Nicolas Morand
  *
