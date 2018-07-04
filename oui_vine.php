@@ -36,10 +36,8 @@ namespace Oui {
         class Vine extends Provider
         {
             protected static $patterns = array(
-                'video' => array(
-                    'scheme' => '#^(http|https)://(www\.)?vine.co/(v/)?([^&?/]+)#i',
-                    'id'     => '4'
-                ),
+                'scheme' => '#^(http|https)://(www\.)?vine.co/(v/)?([^&?/]+)#i',
+                'id'     => '4'
             );
             protected static $src = '//vine.co/';
             protected static $script = 'https://platform.vine.co/static/scripts/embed.js';
