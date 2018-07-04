@@ -45,15 +45,9 @@ namespace Oui {
             protected static $script = 'https://platform.vine.co/static/scripts/embed.js';
             protected static $glue = array('v/', '/embed/', '?');
             protected static $dims = array(
-                'width'    => array(
-                    'default' => '600',
-                ),
-                'height'   => array(
-                    'default' => '600',
-                ),
-                'ratio'    => array(
-                    'default' => '',
-                ),
+                'width'  => '600',
+                'height' => '600',
+                'ratio'  => '',
             );
             protected static $params = array(
                 'type' => array(
