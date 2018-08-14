@@ -29,60 +29,59 @@
  * @package Oui\Player
  */
 
-namespace Oui {
+namespace Oui;
 
-    if (class_exists('Oui\Provider')) {
+if (class_exists('Oui\Provider')) {
 
-        class Vine extends Provider
+    class Vine extends Provider
+    {
+        protected static $srcBase = '//vine.co/';
+        protected static $srcGlue = array('v/', '/embed/', '?');
+        protected static $script = 'https://platform.vine.co/static/scripts/embed.js';
+        protected static $iniDims = array(
+            'width'  => '600',
+            'height' => '600',
+            'ratio'  => '',
+        );
+        protected static $iniParams = array(
+            'type' => array(
+                'default' => 'simple',
+                'valid'   => array('simple', 'postcard'),
+            ),
+            'audio' => array(
+                'default' => '0',
+                'valid'   => array('0', '1'),
+            ),
+        );
+        protected static $mediaPatterns = array(
+            'scheme' => '#^https?://(www\.)?vine.co/(v/)?([^&?/]+)#i',
+            'id'     => '3'
+        );
+
+        /**
+         * {@inheritdoc}
+         */
+
+        public function getParams()
         {
-            protected static $patterns = array(
-                'scheme' => '#^(http|https)://(www\.)?vine.co/(v/)?([^&?/]+)#i',
-                'id'     => '4'
-            );
-            protected static $src = '//vine.co/';
-            protected static $script = 'https://platform.vine.co/static/scripts/embed.js';
-            protected static $glue = array('v/', '/embed/', '?');
-            protected static $dims = array(
-                'width'  => '600',
-                'height' => '600',
-                'ratio'  => '',
-            );
-            protected static $params = array(
-                'type' => array(
-                    'default' => 'simple',
-                    'valid'   => array('simple', 'postcard'),
-                ),
-                'audio' => array(
-                    'default' => '0',
-                    'valid'   => array('0', '1'),
-                ),
-            );
+            $params = array();
 
-            /**
-             * {@inheritdoc}
-             */
+            foreach (self::getIniParams() as $param => $infos) {
+                $pref = get_pref(strtolower(str_replace('\\', '_', get_class($this))) . '_' . $param);
+                $default = $infos['default'];
+                $value = isset($this->config[$param]) ? $this->config[$param] : '';
 
-            public function getPlayerParams()
-            {
-                $params = array();
-
-                foreach (self::getParams() as $param => $infos) {
-                    $pref = get_pref(strtolower(str_replace('\\', '_', get_class($this))) . '_' . $param);
-                    $default = $infos['default'];
-                    $value = isset($this->config[$param]) ? $this->config[$param] : '';
-
-                    // Add attributes values in use or modified prefs values as player parameters.
-                    if ($param === 'type') {
-                        $params[] = $value ?: $pref;
-                    } elseif ($value === '' && $pref !== $default) {
-                        $params[] = $param . '=' . $pref;
-                    } elseif ($value !== '') {
-                        $params[] = $param . '=' . $value;
-                    }
+                // Add attributes values in use or modified prefs values as player parameters.
+                if ($param === 'type') {
+                    $params[] = $value ?: $pref;
+                } elseif ($value === '' && $pref !== $default) {
+                    $params[] = $param . '=' . $pref;
+                } elseif ($value !== '') {
+                    $params[] = $param . '=' . $value;
                 }
-
-                return $params;
             }
+
+            return $params;
         }
     }
 }
