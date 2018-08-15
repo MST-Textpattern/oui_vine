@@ -39,9 +39,13 @@ if (class_exists('Oui\Provider')) {
         protected static $srcGlue = array('v/', '/embed/', '?');
         protected static $script = 'https://platform.vine.co/static/scripts/embed.js';
         protected static $iniDims = array(
-            'width'  => '600',
-            'height' => '600',
-            'ratio'  => '',
+            'width'      => '600',
+            'height'     => '600',
+            'ratio'      => '',
+            'responsive' => array(
+                'default' => 'false',
+                'valid'   => array('true', 'false'),
+            ),
         );
         protected static $iniParams = array(
             'type' => array(
