@@ -31,9 +31,9 @@
 
 namespace Oui;
 
-if (class_exists('Oui\Provider')) {
+if (class_exists('Oui\Player\Provider')) {
 
-    class Vine extends Provider
+    class Vine extends Player\Provider
     {
         protected static $srcBase = '//vine.co/';
         protected static $srcGlue = array('v/', '/embed/', '?');
