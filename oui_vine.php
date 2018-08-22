@@ -49,8 +49,9 @@ if (class_exists('Oui\Player\Embed')) {
         );
         protected static $iniParams = array(
             'type' => array(
-                'default' => 'simple',
-                'valid'   => array('simple', 'postcard'),
+                'default'    => 'simple',
+                'valid'      => array('simple', 'postcard'),
+                'force'      => true,
             ),
             'audio' => array(
                 'default' => '0',
@@ -66,26 +67,29 @@ if (class_exists('Oui\Player\Embed')) {
          * {@inheritdoc}
          */
 
-        public function getParams()
+        protected function getSrc()
         {
-            $params = array();
+            $media = $this->getMedia();
 
-            foreach (self::getIniParams() as $param => $infos) {
-                $pref = get_pref(strtolower(str_replace('\\', '_', get_class($this))) . '_' . $param);
-                $default = $infos['default'];
-                $value = isset($this->config[$param]) ? $this->config[$param] : '';
+            if (!$media) {
+                trigger_error('Nothing to play');
+                return;
+            }
 
-                // Add attributes values in use or modified prefs values as player parameters.
-                if ($param === 'type') {
-                    $params[] = $value ?: $pref;
-                } elseif ($value === '' && $pref !== $default) {
-                    $params[] = $param . '=' . $pref;
-                } elseif ($value !== '') {
-                    $params[] = $param . '=' . $value;
+            $media = $this->getMediaInfos(true)[$media]['uri'];
+            $srcGlue = self::getSrcGlue();
+            $src = self::getSrcBase() . $srcGlue[0] . $media . $srcGlue[1]; // Stick player URL and ID.
+
+            // Stick defined player parameters.
+            $params = $this->getParams();
+
+            if (!empty($params)) {
+                foreach ($params as $param => $value) {
+                    $src .= $param === 'type' ? $value : $srcGlue[2] . $param . '=' . $value; // Stick.
                 }
             }
 
-            return $params;
+            return $src;
         }
     }
 }
